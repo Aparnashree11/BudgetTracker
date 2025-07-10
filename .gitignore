@@ -1,0 +1,40 @@
+# ===================
+# Global ignores
+# ===================
+
+# macOS system files
+.DS_Store
+
+# Log files
+*.log
+
+# Python artifacts (backend)
+backend/__pycache__/
+backend/notebooks/
+*.py[cod]
+*.egg-info/
+backend/.env
+backend/.venv/
+backend/.env.*
+backend/.venv/
+
+# Frontend (Next.js, Node)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env*
+frontend/.turbo/
+frontend/.vercel/
+frontend/tsconfig.json
+frontend/package-lock.json
+frontend/next.config.ts
+frontend/next-env.d.ts
+
+# IDE settings (optional)
+.vscode/
+.idea/
+
+# Local DB or cache files
+*.db
+*.sqlite3
