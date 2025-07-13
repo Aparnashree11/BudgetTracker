@@ -52,6 +52,7 @@ export default function Upload() {
           </Typography>
           <Input
             type="file"
+            inputProps={{ accept: '.csv,text/csv' }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFile(e.target.files?.[0] || null)}
             sx={{ mb: 3 }}
           />
