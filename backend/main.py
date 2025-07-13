@@ -55,11 +55,6 @@ async def upload_csv(file: UploadFile = File(...), table_name: str = Form(...)):
 
         conn = get_db_connection()
         cursor = conn.cursor()
-
-       # Create database if not exists
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {table_name}")
-        cursor.execute(f"USE {table_name}")
-
         # Drop table if exists
         cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
 
