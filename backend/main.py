@@ -8,6 +8,7 @@ import os
 import io
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+import httpx
 
 app = FastAPI()
 load_dotenv()
@@ -39,12 +40,29 @@ def clean_sql_response(content):
     return content
 
 # Ask LLM
-def ask_llm(prompt, model=os.getenv('OLLAMA_MODEL')):
-    response = ollama.chat(
-        model=model,
-        messages=[{"role": "user", "content": prompt}]
+def ask_llm(prompt, model=os.getenv('OPENROUTER_MODEL')):
+    headers = {
+        "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY')}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://yourappname.example.com",  # can be dummy for personal use
+        "X-Title": "FastAPI MySQL Assistant"
+    }
+
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "user", "content": prompt}
+        ]
+    }
+
+    response = httpx.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        headers=headers,
+        json=payload,
+        timeout=60
     )
-    return response['message']['content'].strip()
+    response.raise_for_status()
+    return response.json()['choices'][0]['message']['content'].strip()
 
 # API: Upload CSV and create DB table
 @app.post("/upload-csv")
