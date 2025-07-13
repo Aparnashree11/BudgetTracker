@@ -22,11 +22,12 @@ app.add_middleware(
 
 # Utility to connect to DB
 def get_db_connection():
-    return mysql.connector.connect(
+     return mysql.connector.connect(
         host=os.getenv('MYSQL_HOST'),
         user=os.getenv('MYSQL_USER'),
         password=os.getenv('MYSQL_PASSWORD'),
-        database=os.getenv('MYSQL_DB')
+        database=os.getenv('MYSQL_DB'),
+        port=int(os.getenv('MYSQL_PORT', 3306))
     )
 
 # Clean SQL response markdown
