@@ -26,7 +26,7 @@ export default function Upload() {
   return (
     <Box
       sx={{
-        height: '98vh',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

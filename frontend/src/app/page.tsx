@@ -10,27 +10,26 @@ export default function WelcomePage() {
   return (
     <Box
       sx={{
-        height: '100vh',         // full viewport height
+        height: '100vh',
         display: 'flex',
-        justifyContent: 'center',  
-        alignItems: 'center',     // center vertically
+        justifyContent: 'center',
+        alignItems: 'center',
         bgcolor: 'primary.main',
-        overflow: 'hidden',       // hide any accidental overflow
+        px: 2,
+        overflow: 'hidden',  // prevent scrollbars here too
       }}
     >
-     <Box
-       sx={{
-          position: 'absolute',  // make it full width ignoring parent's padding/margins
-          top: '25.5%',
-          left: 0,
-          right: 0,
-          bgcolor: 'primary.main',
-          color: 'primary.contrastText',
-          py: 3,
+      <Paper
+        sx={{
+          p: 15,               // reduce padding a bit
+          width: '100%',
+          boxSizing: 'border-box',
           textAlign: 'center',
+          maxHeight: '90vh',  // don't let paper grow beyond viewport
+          overflowY: 'hidden',  // allow scrolling inside paper if needed
         }}
-    >
-      <Paper sx={{ p: 10, width: '100%' }} elevation={3}>
+        elevation={3}
+      >
         <motion.div initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}>
           <Typography variant="h1" marginBottom='2%'>
             Budget Tracker RAG App
@@ -49,6 +48,5 @@ export default function WelcomePage() {
         </motion.div>
       </Paper>
     </Box>
-  </Box>
   );
 }
