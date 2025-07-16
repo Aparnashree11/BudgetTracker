@@ -1,6 +1,6 @@
 # Budget Tracker RAG App
 
-**Live Demo:** [Check out the App Here](https://budget-tracker-virid-psi.vercel.app/)
+**App Link:** [Check out the App Here](https://budget-tracker-virid-psi.vercel.app/)
 
 ---
 
